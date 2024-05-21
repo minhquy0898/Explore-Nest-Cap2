@@ -15,6 +15,8 @@ const formatCurrencyVND = (amount: number, currencySymbol = "vnđ") => {
   });
 };
 
+enum sortType { "week", "month", "year" }
+
 const Dashboard: React.FC = () => {
 
   const navigate = useNavigate();
@@ -28,16 +30,27 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     dashboardApi.getAnalytics().then(rs => {
-      console.log(rs.data)
       setData(rs.data)
     }).catch(err => console.log(err))
   }, [])
 
 
+  const [sortBy, setSortBy] = useState<sortType>(sortType.week)
+
   return (
     <DefaultLayout>
+      <div className="w-full flex justify-end mb-2">
+        <button onClick={() => setSortBy(sortType.week)}
+          className={`px-3 py-1 mx-2 rounded border-[1px] ${sortBy == sortType.week && "bg-primary/30"}`} >Tuần này</button>
+        <button onClick={() => setSortBy(sortType.month)}
+          className={`px-3 py-1 mx-2 rounded border-[1px] ${sortBy == sortType.month && "bg-primary/30"}`}>Tháng này</button>
+        <button onClick={() => setSortBy(sortType.year)}
+          className={`px-3 py-1 mx-2 rounded border-[1px] ${sortBy == sortType.year && "bg-primary/30"}`}>Năm này</button>
+
+      </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-5 2xl:gap-7.5">
-        <CardDataStats title="Tổng Tour" total={data.totalTourPost}  >
+        <CardDataStats title="Tổng Tour"
+          total={sortBy == sortType.week ? data.week?.totalTourPost : data.month?.totalTourPost}  >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -56,7 +69,8 @@ const Dashboard: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Lợi nhuận" total={formatCurrencyVND(parseInt(data.revenue||0))}  >
+        <CardDataStats title="Tổng doanh thu"
+          total={formatCurrencyVND(parseInt(sortBy == sortType.week && data.week?.revenue || sortBy == sortType.month && data.month?.revenue || sortBy == sortType.year && data.year?.revenue || 0))}   >
           <svg
             className="fill-primary dark:fill-white"
             width="20"
@@ -98,7 +112,8 @@ const Dashboard: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Số hướng dẫn viên" total={data.totalStaff} >
+        <CardDataStats title="Số hướng dẫn viên"
+          total={sortBy == sortType.week && data.week?.totalStaff || sortBy == sortType.month && data.month?.totalStaff || sortBy == sortType.year && data.year?.totalStaff} >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -121,7 +136,8 @@ const Dashboard: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Số bên hợp tác" total={data.totalManager} >
+        <CardDataStats title="Số bên hợp tác"
+           total={sortBy == sortType.week && data.week?.totalManager || sortBy == sortType.month && data.month?.totalManager || sortBy == sortType.year && data.year?.totalManager} >
           <svg
             className="fill-primary dark:fill-white"
             width="22"

@@ -127,8 +127,21 @@ async function sendMailWithPassword(email_customer, password) {
   console.log('Message sent: %s', info.messageId)
 }
 
+async function spamMail(html, mailList) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: 'hibookingtour@gmail.com', // sender address
+    to: mailList, // list of receiverss
+    subject: 'Thông báo', // Subject line
+    html: html // html body
+  })
+
+  console.log('Message sent: %s', info.messageId)
+}
+
 const emailService = {
   sendMailWithHtml,
+  spamMail,
   sendMailWithPassword
 }
 

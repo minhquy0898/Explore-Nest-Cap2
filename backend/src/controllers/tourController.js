@@ -1,6 +1,9 @@
 import db from '~/models'
+import emailService from '~/services/mailService'
 import tourService from '~/services/tourService'
 import ApiError from '~/utils/ApiError'
+import { formatCurrencyVND, formatDate } from '~/utils/formatDate'
+import { provinces } from '~/utils/provinces'
 
 const getTour = async (req, res, next) => {
   try {
@@ -66,6 +69,59 @@ const getTourDetail = async (req, res, next) => {
 const createTour = async (req, res, next) => {
   try {
     const newTour = await tourService.createTour(req.body)
+    const users = await db.User.findAll()
+
+    const mailList = users.map((user) => {
+      return user.email
+    })
+
+    const destination = provinces.find((p) => p.slug === newTour.destination);
+
+    const tour = await db.Tour.findOne({
+      where: { id: newTour.id },
+      include: [
+        {
+          model: db.Staff,
+          as: 'staffData',
+          include: [
+            {
+              model: db.Account,
+              as: 'accountData',
+              attributes: { exclude: ['createdAt', 'updatedAt', 'password'] }
+            }
+          ]
+        },
+        {
+          model: db.Manager,
+          as: 'managerData',
+          include: [
+            {
+              model: db.Account,
+              as: 'accountData',
+              attributes: { exclude: ['createdAt', 'updatedAt', 'password'] }
+            }
+          ]
+        }
+      ]
+    })
+
+    const html = `
+    <div>
+    <p> Tên tour: ${newTour.tour_name}</p>
+    <p> Giá: ${formatCurrencyVND(newTour.initial_price - (newTour.initial_price * newTour.promotional))}</p>
+    <p> Điểm đến: ${destination.name}</p>
+    <p>  Bắt đầu ngày ${formatDate(tour.departure_day)}</p>
+    <p> Ngày về: ${formatDate(tour.end_tour_day)}</p>
+    <p>Công ty: ${tour.managerData.company_name}</p>
+    </div>
+    `
+
+
+    try {
+      await emailService.spamMail(html, mailList)
+    } catch (error) {
+      return account_info
+    }
     return res.status(200).json({
       statusCode: 200,
       message: 'Thêm tour thành công',
