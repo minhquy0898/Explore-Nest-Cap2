@@ -9,6 +9,8 @@ import bcrypt from 'bcryptjs'
 import authValidation from '~/validations/loginValidation'
 import randomCatAvatar from '~/utils/randomCatAvatar'
 import apifeature from '~/helpers/apifeature'
+import generateStrongPassword from '~/utils/generateStrongPassword'
+import emailService from '~/services/mailService'
 
 const router = express.Router()
 
@@ -35,22 +37,22 @@ const loginFuc = async (req, res, next) => {
     }
 
     const token = jwt.sign({
-      id : user.dataValues.id,
-      email : user.dataValues.email,
-      fullName : user.dataValues.fullName,
-      avatar : user.dataValues.avatar,
-      role : 'customer'
+      id: user.dataValues.id,
+      email: user.dataValues.email,
+      fullName: user.dataValues.fullName,
+      avatar: user.dataValues.avatar,
+      role: 'customer'
     }, env.JWT_SECRETKEY)
 
     return res.status(200).json({
-      statusCode : 200,
-      token : token,
+      statusCode: 200,
+      token: token,
       user: {
         id: user.id,
         email: user.email,
         fullName: user.fullName,
         avatar: user.avatar,
-        role : 'customer'
+        role: 'customer'
       }
     })
   } catch (error) {
@@ -110,7 +112,7 @@ const signInFuc = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
   try {
     const { fullName, avatar, current_password, new_password } = req.body
-    if ( current_password && new_password) {
+    if (current_password && new_password) {
       const user = await db.User.findOne({
         where: {
           id: req.user.id
@@ -158,11 +160,11 @@ const updateUser = async (req, res, next) => {
     })
 
     const token = jwt.sign({
-      id : userNew.dataValues.id,
-      email : userNew.dataValues.email,
-      fullName : userNew.dataValues.fullName,
-      avatar : userNew.dataValues.avatar,
-      role : 'customer'
+      id: userNew.dataValues.id,
+      email: userNew.dataValues.email,
+      fullName: userNew.dataValues.fullName,
+      avatar: userNew.dataValues.avatar,
+      role: 'customer'
     }, env.JWT_SECRETKEY)
 
     return res.status(200).json({
@@ -177,9 +179,37 @@ const updateUser = async (req, res, next) => {
   }
 }
 
+const forgotPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body
+    const strongPassword = generateStrongPassword()
+    const hashPassword = await bcrypt.hash(strongPassword, 10)
+
+    await db.User.update({ password: hashPassword }, {
+      where: {
+        email: email
+      }
+    })
+    ///send password
+    const html = `${strongPassword}`
+
+    await emailService.sendMailForgotPassword(html, email)
+    return res.status(200).json({
+      statusCode: 200,
+      message: 'Cập nhật thành công',
+    })
+
+  } catch (error) {
+    console.log(error)
+    return next(new ApiError(500, 'Co loi xay ra'))
+
+  }
+}
+
 router.route('/signIn').post(signInFuc)
 router.route('/login').post(authValidation.login, loginFuc)
 router.route('/update').put(tokenValidation.authToken, checkRule(['customer']), updateUser)
+router.route('/forgot-password').post(forgotPassword)
 
 
 export const userRouterOnly = router

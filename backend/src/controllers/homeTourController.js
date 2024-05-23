@@ -178,10 +178,10 @@ const getTourHomePage = async (req, res, next) => {
       data: {
         popular: tours.rows.filter((tour, index) => {
           return tour.id % 2 == 0
-        }),
+        }).reverse(),
         trend: tours.rows.filter((tour, index) => {
           return tour.id % 2 != 0
-        })
+        }).reverse()
       }
     })
   } catch (error) {

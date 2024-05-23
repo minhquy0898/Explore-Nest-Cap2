@@ -14,6 +14,7 @@ const LoginPopup = () => {
   const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
+  const [forgotPass, setForgotPass] = useState(false);
 
   const handleToggle = () => {
     setShowModal(!showModal);
@@ -86,6 +87,21 @@ const LoginPopup = () => {
     }
   };
 
+  const handleForgotPass = () => {
+
+    if (!formData.email) {
+      setErrMsg((prev) => ({
+        ...prev,
+        email: { value: true, message: "Email không hợp lệ!" },
+      }));
+
+      return
+    }
+    console.log(formData.email)
+
+    authApi.forgotPass({email:formData.email}).then(rs => toast.success(rs.message)).catch(err => console.log(err))
+  }
+
   return (
     <div className="">
       <button
@@ -110,7 +126,7 @@ const LoginPopup = () => {
             </div>
             <div className="w-full">
               <h3 className="text-2xl font-semibold">
-                Chào mừng quay trởi lại!
+                {!forgotPass ? ' Chào mừng quay trởi lại!' : 'Nhập email để lấy lại mật khẩu'}
               </h3>
             </div>
             <div className="w-full">
@@ -133,7 +149,7 @@ const LoginPopup = () => {
                 </p>
               )}
             </div>
-            <div className="w-full">
+            {!forgotPass && <div className="w-full">
               <input
                 type="password"
                 value={formData.password}
@@ -152,15 +168,20 @@ const LoginPopup = () => {
                   {errMsg.password.message}
                 </p>
               )}
-            </div>
+            </div>}
             <div className="w-full py-0 text-right">
-              <Link className="text-sm">Quên mật khẩu?</Link>
+              <div onClick={() => {
+                setForgotPass(!forgotPass)
+                console.log(forgotPass)
+              }} className="text-sm px-2 py-1 cursor-pointer ">
+                <span>{!forgotPass ? 'Quên mật khẩu?' : 'Quay về đăng nhập'}</span>
+              </div>
             </div>
             <div className="w-full py-0 my-0">
               <Button
-                title={"Đăng nhập"}
+                title={!forgotPass ? "Đăng nhập" : 'Lấy lại mật khẩu'}
                 classes={`w-full py-3 text-white text-sm font-medium rounded-xl ${styles.bgOrange}`}
-                onclick={handleSubmit}
+                onclick={!forgotPass ? handleSubmit : handleForgotPass}
               />
             </div>
             <div className="w-full flex items-center justify-center md:px-1">

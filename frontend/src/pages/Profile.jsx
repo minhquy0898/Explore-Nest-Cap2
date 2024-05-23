@@ -53,7 +53,7 @@ const Profile = () => {
   };
 
   const options = {
-    apiKey: "public_W142iav5koFN628r9BXyvczdxXJM",
+    apiKey: "public_W142icaFTnGbwcc2dzwBfj78VTsy",
     maxFileCount: 1,
     editor: {
       images: {

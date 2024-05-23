@@ -17,6 +17,10 @@ const authApi = {
     const url = "/user/update";
     return axiosClient.put(url, { ...data });
   },
+  forgotPass: (data) => {
+    const url = "/user/forgot-password";
+    return axiosClient.post(url,{...data});
+  },
 };
 
 export default authApi;

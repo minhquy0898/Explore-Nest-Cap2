@@ -20,8 +20,8 @@ const Home = () => {
         const modifiedTours = {
           ...rs.data,
           popular:
-            rs.data.popular?.length > 8
-              ? rs.data.popular.slice(0, 8).map((tour) => {
+            rs.data.popular?.length > 4
+              ? rs.data.popular.slice(0, 4).map((tour) => {
                   return {
                     ...tour,
                     photos: tour.photos?.split(","),
@@ -34,8 +34,8 @@ const Home = () => {
                   };
                 }),
           trend:
-            rs.data.trend?.length > 8
-              ? rs.data.trend.slice(0, 8).map((tour) => {
+            rs.data.trend?.length > 4
+              ? rs.data.trend.slice(0, 4).map((tour) => {
                   return {
                     ...tour,
                     photos: tour.photos?.split(","),

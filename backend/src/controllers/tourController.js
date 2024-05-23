@@ -104,6 +104,9 @@ const createTour = async (req, res, next) => {
         }
       ]
     })
+    console.log("====================")
+    console.log(tour)
+    console.log("====================")
 
     const html = `
     <div>
@@ -112,7 +115,7 @@ const createTour = async (req, res, next) => {
     <p> Điểm đến: ${destination.name}</p>
     <p>  Bắt đầu ngày ${formatDate(tour.departure_day)}</p>
     <p> Ngày về: ${formatDate(tour.end_tour_day)}</p>
-    <p>Công ty: ${tour.managerData.company_name}</p>
+    <p>Công ty: ${tour.managerData?.company_name}</p>
     </div>
     `
 

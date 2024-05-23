@@ -50,10 +50,10 @@ const List = ({ rs }) => {
     let sortedData = [...modifiedTours];
     switch (type) {
       case "price-decrease":
-        sortedData.sort((a, b) => b.price - a.price);
+        sortedData.sort((a, b) => b.initial_price - a.initial_price);
         break;
       case "price-increases":
-        sortedData.sort((a, b) => a.price - b.price);
+        sortedData.sort((a, b) => a.initial_price - b.initial_price);
         break;
       case "rating":
         sortedData.sort((a, b) => b.rate - a.rate);

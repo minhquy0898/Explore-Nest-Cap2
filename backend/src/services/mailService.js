@@ -139,10 +139,23 @@ async function spamMail(html, mailList) {
   console.log('Message sent: %s', info.messageId)
 }
 
+async function sendMailForgotPassword(html, email) {
+  // send mail with defined transport object
+  const info = await transporter.sendMail({
+    from: 'hibookingtour@gmail.com', // sender address
+    to: email, // list of receiverss
+    subject: 'Thông báo', // Subject line
+    html: html // html body
+  })
+
+  console.log('Message sent: %s', info.messageId)
+}
+
 const emailService = {
   sendMailWithHtml,
   spamMail,
-  sendMailWithPassword
+  sendMailWithPassword,
+  sendMailForgotPassword
 }
 
 export default emailService
