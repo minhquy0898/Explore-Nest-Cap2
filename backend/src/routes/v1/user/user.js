@@ -190,13 +190,43 @@ const forgotPassword = async (req, res, next) => {
         email: email
       }
     })
-    ///send password
-    const html = `${strongPassword}`
 
+    const now = new Date()
+    const dateTimeString = now.toLocaleString()
+    ///send password
+    const html = `
+    <div 
+    style=" 
+    display: block; 
+    text-align: center;
+    "
+    >
+    <img style="width: 100px;" src="https://cdn.pixabay.com/photo/2017/01/13/01/22/ok-1976099_1280.png"
+        alt="">
+    </div>
+    <div>
+      <h1 style="
+      padding: 0px;
+      margin: 0px;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      ">
+      Thông báo đổi mật khẩu thành công !</h1>
+    </div>
+      <p style="color: gray; font-style: italic; padding: 0px; margin: 0px;text-align: center;">
+      Vào lúc ${dateTimeString}
+      </p>
+      <p style="padding: 0px; margin: 0px;text-align: center;font-size: 19px;margin-top: 10px;color: #000;">
+      Mật khẩu mới của bạn là :
+      </p>
+      <div style="background-color: orange; margin: 0 auto;padding: 10px;border-radius: 10px;margin-top: 10px; width: 130px;text-align: center;">
+            <span style="font-weight: 500; color: #fff;font-size: 17px;">${strongPassword}</span>
+        </div>
+    `
     await emailService.sendMailForgotPassword(html, email)
     return res.status(200).json({
       statusCode: 200,
-      message: 'Cập nhật thành công',
+      message: 'Mật khẩu đã được gửi về gmail'
     })
 
   } catch (error) {

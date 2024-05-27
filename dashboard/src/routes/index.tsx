@@ -22,71 +22,71 @@ const Calendar = lazy(() => import("../pages/Calendar/Calendar"));
 export const routes = [
     {
 
-        pageTitle: " Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " Dashboard Explore Nest",
         url: "/dashboard",
         page: <Dashboard />,
     },
     {
-        pageTitle: " Account | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " Account Explore Nest",
         url: "/account/manager",
         page: <AccountManager />,
     },
     {
-        pageTitle: " Account | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " Account Explore Nest",
         url: "/account/user",
         page: <AccountUser />,
     },
 
     {
-        pageTitle: " List Tours | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " List Tours Explore Nest",
         url: "/tour",
         page: <ListTours />,
     },
     {
-        pageTitle: " List Tours | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " List Tours Explore Nest",
         url: "/tour/exp",
         page: <ExpListTours />,
     },
     {
-        pageTitle: " List Tours | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " List Tours Explore Nest",
         url: "/tour/staff",
         page: <StaffTours />,
     },
     {
-        pageTitle: " List Tours | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " List Tours Explore Nest",
         url: "/tour/staff/view/:id",
         page: <StaffViewTour />,
     },
     {
-        pageTitle: " List Tours | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " List Tours Explore Nest",
         url: "/tour/view/:id",
         page: <ViewTour />,
     },
 
     {
-        pageTitle: " Create tour | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " Create tour Explore Nest",
         url: "/tour/create",
         page: <CreateTour />,
     },
     {
-        pageTitle: " Edit Tours | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " Edit Tours Explore Nest",
         url: "/tour/edit/:id",
         page: <EditTour />,
     },
 
     {
-        pageTitle: " Booking | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " Booking Explore Nest",
         url: "/book",
         page: <BooksTour />,
     },
     {
-        pageTitle: " Cancel Booking | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " Cancel Booking Explore Nest",
         url: "/book/cancel",
         page: <CancelTour />,
     },
 
     {
-        pageTitle: " Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template",
+        pageTitle: " Calendar Explore Nest",
         url: "/calendar",
         page: <Calendar />,
     },
@@ -102,7 +102,7 @@ export const routes = [
         url: "/profile",
         page: <ProfilePage />,
     },
-    
+
     {
         url: '/',
         pageTitle: " Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template",

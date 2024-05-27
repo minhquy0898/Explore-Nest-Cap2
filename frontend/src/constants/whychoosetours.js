@@ -72,17 +72,17 @@ export const trendingDestination = [
     slug: "da-nang",
   },
   {
-    image: "https://haiphongnews.gov.vn/uploads/2023-T6/NHL-1.png",
-    location: "Hải Phòng",
+    image: "https://media.baodautu.vn/Images/phuongthanh02/2022/08/25/14-Du%20l%E1%BB%8Bch%20l%C3%A0o%20Cai%204.jpg",
+    location: "Lào Cai",
     duration: "100+ Tours",
-    slug: "hai-phong",
+    slug: "lao-cai",
   },
   {
     image:
       "https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2016/01/nha-trang-thap-tram-huong.jpg",
-    location: "Nha Trang",
+    location: "Khánh Hòa",
     duration: "100+ Tours",
-    slug: "nha-trang",
+    slug: "khanh-hoa",
   },
   {
     image:
@@ -253,7 +253,7 @@ export const articles = [
     title: "Kenya và Tanzania Safari: Trải Nghiệm Safari Châu Phi Tốt Hơn",
     date: "06 Tháng 4, 2023",
     author: "Bởi Nguyễn Văn An",
-    url:'https://dantri.com'
+    url: 'https://dantri.com'
   },
   {
     image: Article2,
@@ -261,7 +261,7 @@ export const articles = [
       "Khám Phá Vùng Đồng Cỏ Serengeti: Một Cuộc Phiêu Lưu Về Động Vật Hoang Dã ",
     date: "07 Tháng 4, 2023",
     author: "Bởi Phạm Thị Hương",
-    url:''
+    url: ''
 
   },
   {
@@ -269,7 +269,7 @@ export const articles = [
     title: "Vào Hoang Dã: Một Hành Trình Safari Không Thể Quên",
     date: "08 Tháng 4, 2023",
     author: "Bởi Lê Minh Đức",
-    url:''
+    url: ''
 
   },
 ];

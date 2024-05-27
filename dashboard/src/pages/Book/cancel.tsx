@@ -24,7 +24,7 @@ const CancelTours = () => {
     // const [currentPage, setCurrentPage] = useState(
     //     parseInt(params[0].get('page') ?? '1'),
     // );
-
+    console.log(cancelTours);
     const [accountFormModal, setAccountFormModal] = useState(false);
     const [qrData, setQrData] = useState<string[]>([]);
 
@@ -108,7 +108,7 @@ const CancelTours = () => {
             });
         });
     }, [cancelTours])
-
+    // console.log(cancelTours)
 
     const handleClickNavigate = (path: string) => {
         startTransition(() => {
@@ -155,8 +155,9 @@ const CancelTours = () => {
         const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
         return daysDiff;
-    }
 
+    }
+    // console.log(data.id);
 
     return (
         <DefaultLayout>
@@ -207,7 +208,7 @@ const CancelTours = () => {
                                         <td className="border-b border-[#eee] text-black py-5 px-4  dark:border-strokedark ">
                                             <h4
                                                 onClick={() =>
-                                                    handleClickNavigate(`/tour/view/${data.id}`)
+                                                    handleClickNavigate(`/tour/view/${data.tourData.id}`)
                                                 }
                                                 className="hover:text-blue-600 hover:underline font-semibold text-base cursor-pointer line-clamp-2 overflow-hidden"
                                             >

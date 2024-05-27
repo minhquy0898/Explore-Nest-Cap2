@@ -23,7 +23,7 @@ const createTour = async (req, res, next) => {
       }),
       end_tour: Joi.string().messages(),
       destination: Joi.string().required().messages({
-        'any.required': 'Vui lòng cung cấp điểm đến'
+        'any.required': 'Vui lòng cung cấp điểm đi'
       }),
       initial_price: Joi.number().required().messages({
         'any.required': 'Vui lòng cung cấp giá ban đầu'

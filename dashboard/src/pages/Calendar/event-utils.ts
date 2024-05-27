@@ -4,12 +4,12 @@ let todayStr = new Date().toISOString().replace(/T.*$/, ''); // YYYY-MM-DD of to
 export const INITIAL_EVENTS = [
   {
     id: createEventId(),
-    title: 'Code header',
+    title: 'Tour Đà Nẵng',
     start: todayStr,
   },
   {
     id: createEventId(),
-    title: 'Học tiếng anh',
+    title: 'Có lịch làm việc',
     start: todayStr + 'T12:00:00',
   },
 ];

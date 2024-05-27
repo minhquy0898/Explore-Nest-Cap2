@@ -106,7 +106,7 @@ const BooksTour = () => {
                                         <td className="border-b border-[#eee] text-black py-5 px-4  dark:border-strokedark ">
                                             <h4
                                                 onClick={() =>
-                                                    handleClickNavigate(`/tour/view/${data.id}`)
+                                                    handleClickNavigate(`/tour/view/${data.tourData.id}`)
                                                 }
                                                 className="hover:text-blue-600 hover:underline font-semibold text-base cursor-pointer line-clamp-2 overflow-hidden"
                                             >
@@ -119,7 +119,7 @@ const BooksTour = () => {
                                             </h6>
                                             <h6 className="text-sm mt-1 flex items-center">
                                                 <CiLocationOn size={18} className="mr-2" />
-                                                <label className="mr-1">Điểm đến: </label>
+                                                <label className="mr-1">Điểm đi: </label>
                                                 {data.tourData.destination}
                                             </h6>
                                             <h6 className="text-sm mt-1 flex items-center">

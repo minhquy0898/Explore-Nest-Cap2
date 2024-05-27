@@ -61,7 +61,7 @@ const StaffViewTour = () => {
           </p>
           <p className="text-md font-normal flex items-center">
             <FaLocationDot className="mr-1" />
-            Địa điểm: {getName(data?.destination, provinces)}
+            Điểm đi: {getName(data?.destination, provinces)}
           </p>
           <p className="text-md font-normal flex items-center">
             <FaRegBuilding className="mr-1" />

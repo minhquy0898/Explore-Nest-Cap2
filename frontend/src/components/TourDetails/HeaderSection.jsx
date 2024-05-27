@@ -63,7 +63,7 @@ const HeaderSection = ({
           <div className="group relative  flex justify-center px-16 cursor-pointer">
             <p className="text-md font-normal flex items-center">
               <CiLocationOn strokeWidth="1.5px" className="mr-1" />
-              Địa điểm: {getProvinceName(destination)}
+              Điểm đi: {getProvinceName(destination)}
             </p>
             <span className="tooltip absolute bottom-6 text-center scale-0 rounded bg-gray-800 bg-opacity-45   p-2 text-xs text-white group-hover:scale-100">
               Tour này có điểm đến sẽ là

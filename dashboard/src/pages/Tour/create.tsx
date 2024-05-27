@@ -257,7 +257,7 @@ const CreateTour = () => {
                                         <div className="w-full xl:w-1/3">
                                             <SelectGroupTwo
                                                 defaultValue={provinces[0]?.slug}
-                                                title="Địa điểm"
+                                                title="Điểm đi"
                                                 selectData={provinces}
                                                 onSelectChange={(value) => {
                                                     setFormData((prevData) => ({

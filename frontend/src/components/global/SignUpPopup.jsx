@@ -133,9 +133,8 @@ const SignUpPopup = () => {
                     fullName: e.target.value,
                   }))
                 }
-                className={`w-full p-3 rounded-xl border ${
-                  errMsg.fullName.value ? "border-red-600" : "border-slate-300"
-                } text-sm font-normal outline-none`}
+                className={`w-full p-3 rounded-xl border ${errMsg.fullName.value ? "border-red-600" : "border-slate-300"
+                  } text-sm font-normal outline-none`}
                 placeholder="Nhập tên của bạn"
               />
               {errMsg.fullName.value && (
@@ -154,9 +153,8 @@ const SignUpPopup = () => {
                     email: e.target.value,
                   }))
                 }
-                className={`w-full p-3 rounded-xl border ${
-                  errMsg.email.value ? "border-red-600" : "border-slate-300"
-                } text-sm font-normal outline-none`}
+                className={`w-full p-3 rounded-xl border ${errMsg.email.value ? "border-red-600" : "border-slate-300"
+                  } text-sm font-normal outline-none`}
                 placeholder="Nhập email của bạn"
               />
               {errMsg.email.value && (
@@ -175,9 +173,8 @@ const SignUpPopup = () => {
                     password: e.target.value,
                   }))
                 }
-                className={`w-full p-3 rounded-xl border ${
-                  errMsg.password.value ? "border-red-600" : "border-slate-300"
-                } text-sm font-normal outline-none`}
+                className={`w-full p-3 rounded-xl border ${errMsg.password.value ? "border-red-600" : "border-slate-300"
+                  } text-sm font-normal outline-none`}
                 placeholder="Nhập mật khẩu"
               />
               {errMsg.password.value && (
@@ -203,7 +200,7 @@ const SignUpPopup = () => {
                 onclick={handleSubmit}
               />
             </div>
-            <div className="w-full flex items-center justify-center md:px-1">
+            {/* <div className="w-full flex items-center justify-center md:px-1">
               <div className="border w-full border-slate-200"></div>
               <div className="w-full text-center">
                 <p className="text-sm">Phương thức khác</p>
@@ -217,11 +214,11 @@ const SignUpPopup = () => {
                 <img src={GoogleLogo} alt="" className="w-5 h-5" />
                 Đăng ký với tài khoản Google
               </button>
-            </div>
-          </div>
-        </div>
+            </div> */}
+          </div >
+        </div >
       )}
-    </div>
+    </div >
   );
 };
 

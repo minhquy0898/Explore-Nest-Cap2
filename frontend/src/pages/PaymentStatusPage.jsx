@@ -35,7 +35,7 @@ const PaymentStatusPage = () => {
             </p>
             <p className="text-sm">
               Hãy click vào đây để trở về
-              <Link to="/" className="text-blue-600 mx-1 underline">
+              <Link to="/" className="text-blue-600 mx-1 ">
                 trang chủ
               </Link>
             </p>

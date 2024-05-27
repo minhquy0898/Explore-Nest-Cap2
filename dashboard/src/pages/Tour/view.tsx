@@ -147,7 +147,7 @@ const ViewTour = () => {
         <h1 className="font-semibold text-2xl w-full">{tour?.tour_name}</h1>
         <div className="w-full flex items-center justify-between my-2 px-2">
           <p>Phương tiện: {getSlugName(tour?.vehicle, vehicle)}</p>
-          <p>Địa điểm: {getSlugName(tour?.destination, provinces)}</p>
+          <p>Điểm đi: {getSlugName(tour?.destination, provinces)}</p>
           <p>Ngày đi: {formatDate(tour?.departure_day)}</p>
           <p>Ngày về: {formatDate(tour?.end_tour_day)}</p>
         </div>
@@ -166,13 +166,13 @@ const ViewTour = () => {
             </p>
             <p className="w-full flex justify-between px-2">
               <span>Giá cả / vé:</span>
-               <span>{formatCurrencyVND(tour?.initial_price||0)}</span>
+              <span>{formatCurrencyVND(tour?.initial_price || 0)}</span>
             </p>
             <p className="w-full flex justify-between px-2">
               <span>Giảm giá:</span>
               <span> {(tour?.promotional * 100).toFixed(0)} %</span>
             </p>
-     
+
             <p className="w-full flex justify-between px-2">
               <span>Tổng vé:</span> <span>{tour?.max_user} vé</span>
             </p>

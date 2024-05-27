@@ -9,6 +9,7 @@ import PopularThingsToDoSection from "../components/Home/PopularThingsToDoSectio
 import TopTrending from "../components/Home/TopTrending";
 import ArticlesSection from "../components/Home/ArticlesSection";
 import homeApi from "../apis/homeApi";
+import Introduction from "./Introduction";
 
 const Home = () => {
   const [data, setData] = useState({});
@@ -22,31 +23,31 @@ const Home = () => {
           popular:
             rs.data.popular?.length > 4
               ? rs.data.popular.slice(0, 4).map((tour) => {
-                  return {
-                    ...tour,
-                    photos: tour.photos?.split(","),
-                  };
-                })
+                return {
+                  ...tour,
+                  photos: tour.photos?.split(","),
+                };
+              })
               : rs.data.popular?.map((tour) => {
-                  return {
-                    ...tour,
-                    photos: tour.photos?.split(","),
-                  };
-                }),
+                return {
+                  ...tour,
+                  photos: tour.photos?.split(","),
+                };
+              }),
           trend:
             rs.data.trend?.length > 4
               ? rs.data.trend.slice(0, 4).map((tour) => {
-                  return {
-                    ...tour,
-                    photos: tour.photos?.split(","),
-                  };
-                })
+                return {
+                  ...tour,
+                  photos: tour.photos?.split(","),
+                };
+              })
               : rs.data.trend?.map((tour) => {
-                  return {
-                    ...tour,
-                    photos: tour.photos?.split(","),
-                  };
-                }),
+                return {
+                  ...tour,
+                  photos: tour.photos?.split(","),
+                };
+              }),
         };
 
         setData(modifiedTours);
@@ -63,6 +64,7 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <Introduction />
       <WhyChooseToursSection />
       <TrendingDestinationsSection />
       <FindPopularTours data={data.popular} />

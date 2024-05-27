@@ -39,6 +39,7 @@ const PaymentMethodComponent = ({ handleCheckout }) => {
               classes={`${styles.bgOrange} w-[200px] py-2 text-base font-medium py-2  text-white rounded-xl`}
             />
           </div>
+
         </div>
       </div>
     </>

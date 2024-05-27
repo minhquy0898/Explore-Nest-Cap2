@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import Button from "./Button";
 import { toast } from "react-toastify";
 
-
 const LoginPopup = () => {
   const dispatch = useDispatch();
 
@@ -99,7 +98,7 @@ const LoginPopup = () => {
     }
     console.log(formData.email)
 
-    authApi.forgotPass({email:formData.email}).then(rs => toast.success(rs.message)).catch(err => console.log(err))
+    authApi.forgotPass({ email: formData.email }).then(rs => toast.success(rs.message)).catch(err => console.log(err))
   }
 
   return (
@@ -184,21 +183,21 @@ const LoginPopup = () => {
                 onclick={!forgotPass ? handleSubmit : handleForgotPass}
               />
             </div>
-            <div className="w-full flex items-center justify-center md:px-1">
+            {/* <div className="w-full flex items-center justify-center md:px-1">
               <div className="border w-full border-slate-200"></div>
               <div className="w-full text-center">
                 <p className="text-sm">Phương thức khác</p>
               </div>
               <div className="border w-full border-slate-200"></div>
-            </div>
-            <div className="w-full">
+            </div> */}
+            {/* <div className="w-full">
               <button
                 className={`w-full py-3 text-sm font-medium rounded-xl border border-slate-200 flex items-center justify-center gap-x-3`}
               >
                 <img src={GoogleLogo} alt="" className="w-5 h-5" />
                 Đăng nhập với tài khoản Google
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
@@ -207,3 +206,5 @@ const LoginPopup = () => {
 };
 
 export default LoginPopup;
+
+

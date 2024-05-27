@@ -1,12 +1,17 @@
 import jwt from 'jsonwebtoken'
 import env from '~/config/environment'
 
+
+// const generateToken = (payload) => {
+//   return jwt.sign(payload, env.JWT_SECRETKEY, { expiresIn: '1m' })
+// }
+
 const authToken = (req, res, next) => {
   const token = req.headers.authorization
 
   if (!token)
     return res.status(403).json({
-      statusCode:403,
+      statusCode: 403,
       message: 'Token is required'
     })
 
@@ -16,7 +21,7 @@ const authToken = (req, res, next) => {
     req.user = decoded
   } catch (err) {
     return res.status(403).json({
-      statusCode:403,
+      statusCode: 403,
       message: 'Invalid token'
     })
   }
@@ -26,4 +31,5 @@ const authToken = (req, res, next) => {
 
 export default {
   authToken
+  // generateToken
 }

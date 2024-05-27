@@ -17,7 +17,7 @@ const List = ({ rs }) => {
   const sortData = [
     { title: "Sắp xếp theo giá cao đến thấp", value: "price-decrease" },
     { title: "Sắp xếp theo giá thấp đến cao", value: "price-increases" },
-    { title: "Sắp xếp theo đánh giá", value: "rating" },
+    // { title: "Sắp xếp theo đánh giá", value: "rating" },
   ];
 
   const [data, setData] = useState();

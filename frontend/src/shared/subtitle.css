@@ -1,0 +1,12 @@
+.section__subtitle {
+    background: var(--secondary-color);
+    font-family: var(--subtitle-font-name);
+    width: max-content;
+    padding: 0px 0.5rem;
+    padding-right: 1rem;
+
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--heading-color);
+}

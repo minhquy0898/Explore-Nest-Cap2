@@ -1,6 +1,7 @@
 import React, { startTransition, useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import Logo from '../../assets/images/logo/logo.svg';
+// import Logo from '../../assets/images/logo/logo.svg';
+import Logo from "../../assets/images/logo/logoImg.png"
 import { ArrowDownIcon, CalendarIcon, DashboardIcon, UserIcon } from '../Icon';
 import SidebarLinkGroup from './SidebarLinkGroup';
 import { useSelector } from 'react-redux';
@@ -84,12 +85,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <NavLink to="/">
           <div className="w-full text-center">
             <div className="w-full flex items-center">
-              <img src="./logo.png" alt="" className=" mx-2" />
-              <p className="text-3xl text-[color:#EB662B] font-bold">VTour</p>
+              <img src={Logo} alt="" className=" mx-2 w-[40px] justify-center" />
+              <p className="text-3xl text-[color:#EB662B] font-bold">Explore Nest</p>
             </div>
           </div>
         </NavLink>
-
         <button
           ref={trigger}
           onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -119,10 +119,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
           {/* <!-- Menu Group --> */}
           <div>
-
-
             <ul className="mb-6 flex flex-col gap-1.5">
-
               {role == "admin" && <li onClick={() => handleClickNavigate('/')} >
                 <div
                   className={`group cursor-pointer relative flex items-center  gap-2.5 rounded-lg py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/' ||
@@ -329,7 +326,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 'bg-graydark dark:bg-meta-4'
                                 }`}
                             >
-                              Danh sách tuor đặt
+                              Danh sách tour đặt
                             </div>
                           </li>
 

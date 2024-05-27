@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../global/Button";
+import { FaPhoneVolume } from "react-icons/fa";
+import './TourBookingCard.css'
 import { styles } from "../../styles/styles";
 import { GiCheckMark } from "react-icons/gi";
 import { formatCurrencyVND } from "../../utils";
@@ -102,6 +104,76 @@ const TourBookingCard = ({
         onclick={handleBooking}
         classes={`${styles.bgOrange} w-full py-2 text-base font-medium py-3 my-3 text-white rounded-xl`}
       />
+      {/* Tổng đài tư vấn */}
+      <div className=" mt-10 ">
+        <div className="uppercase text-center  bg-blue-600 text-white p-3 ">
+          Tổng đài tư vấn
+        </div>
+        <div className="border border-solid p-4">
+          <p className="font-bold">Mọi thắc mắc của quý khách</p>
+          <p>vui lòng gọi : <span className="text-blue-600 font-bold text-xl">1900 8181</span></p>
+          <p>Chúng tôi hỗ trợ 24/7</p>
+        </div>
+      </div>
+
+      {/* Liên hệ tư vấn viên */}
+      <div className="mt-6 ">
+        <div className="text-xl inline-block border-b-4 border-solid border-blue-500 mb-5">
+          Liên hệ tư vấn viên
+        </div>
+        {/* ----1--- */}
+        <div className="flex border border-solid rounded-lg mb-5">
+          <div className="flex items-center text-4xl p-5 mr-5 ">
+            <FaPhoneVolume fill="#00b874" />
+          </div>
+          <div className="mt-3">
+            <p className=""> Mr. Quý ( Tour Đoàn ) </p>
+            <p className="font-bold"> 0898 240 032 </p>
+          </div>
+        </div>
+        {/* ---2--- */}
+        <div className="flex border border-solid rounded-lg mb-5">
+          <div className="flex items-center text-4xl p-5 mr-5 ">
+            <FaPhoneVolume fill="#00b874" />
+          </div>
+          <div className="mt-3">
+            <p className=""> Mr. Kiếm  </p>
+            <p className="font-bold"> 0123 421 123 </p>
+          </div>
+        </div>
+        {/* ---3---- */}
+        <div className="flex border border-solid rounded-lg mb-5">
+          <div className="flex items-center text-4xl p-5 mr-5 ">
+            <FaPhoneVolume fill="#00b874" />
+          </div>
+          <div className="mt-3">
+            <p className=""> Mrs. Chang Chang </p>
+            <p className="font-bold"> 0789 123 123 </p>
+          </div>
+        </div>
+        {/* ---4---- */}
+        <div className="flex border border-solid rounded-lg mb-5">
+          <div className="flex items-center text-4xl p-5 mr-5 ">
+            <FaPhoneVolume fill="#00b874" />
+          </div>
+          <div className="mt-3">
+            <p className=""> Mrs. Yến Nhi  </p>
+            <p className="font-bold"> 0905 676 789 </p>
+          </div>
+        </div>
+        {/* ---5---- */}
+        <div className="flex border border-solid rounded-lg mb-5">
+          <div className="flex items-center text-4xl p-5 mr-5 ">
+            <FaPhoneVolume fill="#00b874" />
+          </div>
+          <div className="mt-3">
+            <p className=""> Mrs. Hoàng Yến </p>
+            <p className="font-bold"> 0905 987 654 </p>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   );
 };

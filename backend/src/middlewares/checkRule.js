@@ -16,6 +16,9 @@ const checkRule = (permission) => {
     next()
   }
 }
+// // const generateToken = (payload) => {
+//   return jwt.sign(payload, env.JWT_SECRETKEY, { expiresIn: 60 })
+// }
 
 export default checkRule
 

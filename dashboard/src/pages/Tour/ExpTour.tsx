@@ -121,7 +121,7 @@ const ExpListTours = () => {
                         <b>Giá ban đầu:</b> {data.initial_price} VND / Người
                       </h6>
                       <h6 className="text-sm mt-1">
-                        <b>Điểm đến:</b> {getProvinceName(data.destination)}
+                        <b>Điểm đi:</b> {getProvinceName(data.destination)}
                       </h6>
                     </td>
 

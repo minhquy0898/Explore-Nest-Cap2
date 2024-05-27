@@ -1,4 +1,4 @@
-import Logo from "./logo.png";
+import Logo from "./logo-img.png";
 import NotFound from "./notfound.svg";
 import HeroImage from "./hero-bg-hero.png";
 import Main from "./main.png";
@@ -37,6 +37,18 @@ import GetPercentOff from "./get-percent-off.png";
 import Article1 from "./article1.png";
 import Article2 from "./article2.png";
 import Article3 from "./article3.png";
+
+
+
+import BgLi1 from './li-1.png'
+import BgLi2 from './li-2.png'
+import BgLi3 from './li-3.png'
+import BgLi4 from './li-4.png'
+
+import BgIntro from './bg_intro.png'
+import BgRetangle from './bg_retangle.png'
+import Bg3Step from './bg_3step.png'
+import BgBanner from './BgBanner.png'
 
 // tours page
 import TourImag1 from "./tour-1.png";
@@ -105,4 +117,12 @@ export {
   TourDetailsImage3,
   TourDetailsImage4,
   GoogleLogo,
+  BgLi1,
+  BgLi2,
+  BgLi3,
+  BgLi4,
+  BgIntro,
+  BgRetangle,
+  Bg3Step,
+  BgBanner
 };

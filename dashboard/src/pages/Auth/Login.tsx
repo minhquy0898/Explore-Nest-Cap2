@@ -48,12 +48,12 @@ const LoginPage: React.FC = () => {
                         <div className="py-17.5 px-26 text-center">
                             <Link className="mb-5.5 inline-block" to="/">
                                 <div className="w-full flex items-center">
-                                    <img src="./logo.png" alt="" className=" mx-2"/>
+                                    <img src="./logo.png" alt="" className=" mx-2" />
                                     <p className="text-3xl text-[color:#EB662B] font-bold">Tourz Admin</p>
                                 </div>
                             </Link>
 
-                  
+
 
                             <span className="mt-15 inline-block">
                                 <svg
@@ -188,7 +188,7 @@ const LoginPage: React.FC = () => {
 
                             <div className="mb-4">
                                 <label className="mb-2.5 block font-medium text-black dark:text-white">
-                                    Email
+                                    Tên đăng nhập
                                 </label>
                                 <div className="relative">
                                     <input

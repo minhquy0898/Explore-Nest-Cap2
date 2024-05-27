@@ -72,7 +72,7 @@ function stringToJsonObject(stringData) {
       date_booked: dateBooked,
       id_customer: parseInt(idCustomer),
       id_tour: parseInt(tourId),
-      guest_number : parseInt(guest_number)
+      guest_number: parseInt(guest_number)
     }
 
     return jsonObject
@@ -88,14 +88,14 @@ const createURLPayment = async (req, idBook) => {
 
     // get tour id
     const tour = await db.Tour.findOne({
-      where : {
-        id : idBook
+      where: {
+        id: idBook
       }
     })
     if (!tour) {
       throw new ApiError(404, 'Tour not found')
     }
-    const total =req.body.total_price
+    const total = req.body.total_price
 
     const data = {
       id_tour: idBook,
@@ -103,7 +103,7 @@ const createURLPayment = async (req, idBook) => {
       id_user: req.body.id_user,
       member: req.body.member,
       total_price: total,
-      day_booking : new Date().getTime()
+      day_booking: new Date().getTime()
     }
 
     // create book
@@ -122,8 +122,8 @@ const createURLPayment = async (req, idBook) => {
     let date = new Date()
     let createDate = moment(date).format('YYYYMMDDHHmmss')
     let ipAddr =
-              req.headers['x-forwarded-for'] || req.connection.remoteAddress ||
-              req.socket.remoteAddress || req.connection.socket.remoteAddress
+      req.headers['x-forwarded-for'] || req.connection.remoteAddress ||
+      req.socket.remoteAddress || req.connection.socket.remoteAddress
     let tmnCode = env.VNP_TMNCODE
     let secretKey = env.VNP_HASHSECRET
     let vnpUrl = env.VNP_URL
@@ -199,25 +199,25 @@ const vnpReturn = async (query) => {
           include: [
             {
               model: db.Tour,
-              as : 'tourData',
+              as: 'tourData',
               include: [
                 {
                   model: db.Manager,
-                  as : 'managerData',
+                  as: 'managerData',
                   include: [
                     {
                       model: db.Account,
-                      as : 'accountData'
+                      as: 'accountData'
                     }
                   ]
                 },
                 {
                   model: db.Staff,
-                  as : 'staffData',
+                  as: 'staffData',
                   include: [
                     {
                       model: db.Account,
-                      as : 'accountData'
+                      as: 'accountData'
                     }
                   ]
                 }
@@ -225,7 +225,7 @@ const vnpReturn = async (query) => {
             },
             {
               model: db.User,
-              as : 'userData'
+              as: 'userData'
             }
           ]
         })
@@ -248,22 +248,212 @@ const vnpReturn = async (query) => {
         }
 
 
-
+        const now = new Date()
+        const dateTimeString = now.toLocaleString()
 
         const htmlTemplate = `
-        <h2>Thanh toán thành công</h2>
-        <p>Xin chào ${bookSucess.userData.fullName},</p>
-        <p>Cảm ơn bạn đã đặt tour "${bookSucess.tourData.tour_name}" tại công ty du lịch ${bookSucess.tourData.managerData?.company_name}.</p>
-        <p>Thông tin chi tiết:</p>
-        <ul>
-            <li>Tên tour: ${bookSucess.tourData.tour_name}</li>
-            <li>Ngày khởi hành: ${new moment(bookSucess.tourData.departure_day).format('DD/MM/YYYY')}</li>
-            <li>Ngày kết thúc: ${new moment(bookSucess.tourData.end_tour_day).format('DD/MM/YYYY')}</li>
-            <li>Số lượng khách: ${bookSucess.member}</li>
-        </ul>
-        <p>Bạn có thể xem thông tin chi tiết của tour tại <a href="{{tour_link}}">đây</a>.</p>
-        <p>Chúng tôi rất mong chờ chuyến đi của bạn!</p>
-        <p>Trân trọng,</p>
+        <table
+        style="width: 100%; font-family:NetflixSans-Regular,Helvetica,Roboto,Segoe UI,sans-serif; background-color: #eaeaea;"
+        border="0">
+        <tbody>
+            <tr>
+                <td align="center" style="background-color:#eaeaea;margin-top:0">
+                    <table align="center" style="background-color:#ffffff;width:500px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-left:20px;padding-right:20px;padding-top:20px; font-size:16px;">
+                                                    Xin chào ${bookSucess.userData.fullName},
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- tr 2 img check -->
+                            <tr style ="display : flex">
+                                <td style="margin : 0 auto;" align="center">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img width=" 50"
+                                                        src="https://cdn.pixabay.com/photo/2016/03/31/14/37/check-mark-1292787_1280.png"" alt="">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                             <!-- tr 3 chúc mừng -->
+                            <tr style="display : flex">
+                                <td style="margin : 0 auto;" align="center">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style ="font-size : 14px;">
+                                                                    Chúc mừng bạn đã thanh toán thành công!
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- tr 4 thời điểm -->
+                                            <tr style="display : flex;">
+                                                <td style=" font-style: italic; margin : 0 auto;" align="center">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td >
+                                                                    Vào lúc: <span style="color:orange ; font-weight : 700;">${dateTimeString}</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- tr 5 cảm ơn -->
+                                            <tr>
+                                                <td style="display: flex; margin-left: 3%;margin-right: 3%;"
+                                                    align="center">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;font-size: 14px;">
+                                                                    Cảm ơn bạn đã đặt tour
+                                                                    "${bookSucess.tourData.tour_name}" của công ty du
+                                                                    lịch
+                                                                    ${bookSucess.tourData.managerData?.company_name}.
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- tr 6 thông tin-->
+                                            <tr>
+                                                <td
+                                                    style="display: flex; justify-content: left; margin-left: 3%; margin-top: 20px; font-size : 16px;">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    Thông tin chi tiết:
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- tr 7 detail -->
+                                            <tr>
+                                                <td
+                                                    style="display: flex; justify-content: left; margin-left: 8%;font-size: 14px;">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <!-- table 1 -->
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>- Tên tour:
+                                                                                    ${bookSucess.tourData.tour_name}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <!-- tabel 2 -->
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>- Ngày khởi hành: ${new moment(bookSucess.tourData.departure_day).format('DD/MM/YYYY')}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <!-- table 3 -->
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>- Ngày kết thúc: ${new moment(bookSucess.tourData.end_tour_day).format('DD/MM/YYYY')}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <!-- table 4 -->
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>- Số lượng khách:
+                                                                                    ${bookSucess.member}</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- tr 8 bạn có thể -->
+                                            <tr>
+                                                <td
+                                                    style="display: flex; justify-content: left; margin-left: 3%; margin-top: 20px;">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                        Bạn có thể xem thông tin chi tiết của tour
+                                                                        <a href="http://localhost:5173/mytour">tại đây</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- tr 9 rất mong -->
+                                            <tr>
+                                                <td
+                                                    style="display: flex; justify-content: left; margin-left: 3%; margin-top: 10px;">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    Chúng tôi rất mong chờ chuyến đi của bạn!
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- tr 10 cười hihi -->
+                                            <tr style="display : flex">
+                                                <td style="margin : 0 auto;" align="center">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <img width="150"
+                                                                        src="https://res.cloudinary.com/dlpyr7oaa/image/upload/fl_preserve_transparency/v1716730210/Pngtree_hand_painted_mbe_style_mbe_3796901_amppi8.jpg?_s=public-apps"
+                                                                        alt="">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+    </table>
         `
         await mailService.sendMailWithHtml(htmlTemplate, bookSucess.userData.email)
 

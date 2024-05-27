@@ -114,7 +114,7 @@ const StaffTours = () => {
                         <b>Ngày kết thúc:</b> {data.end_tour_day}
                       </h6>
                       <h6 className="text-sm mt-1">
-                        <b>Điểm đến:</b> {getProvinceName(data.destination)}
+                        <b>Điểm đi:</b> {getProvinceName(data.destination)}
                       </h6>
                     </td>
 
